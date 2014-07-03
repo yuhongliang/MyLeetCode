@@ -16,8 +16,8 @@ $RECYCLE.BIN/
 *.exe
 *.dev
 *.layout
-main.cpp
 *.o
+*.win
 
 # =========================
 # Operating System Files
