@@ -40,7 +40,7 @@ private:
 		{
 			cur = cur->next;
 		}
-		return i==k ? true : false;
+		return cur ? true : false;
 	}
     ListNode *reverseBetween(ListNode *head, int m, int n)
 	{
