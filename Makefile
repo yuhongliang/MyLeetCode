@@ -5,7 +5,7 @@ TARGET+=single_number_2 add_two_numbers reverse_linked_list_2 partition_list
 TARGET+=remove_duplicates_from_sorted_list remove_duplicates_from_sorted_list_2
 TARGET+=rotate_list Remove_Nth swapPairs reverseKGroup Valid_Palindrome Valid_Parentheses
 TARGET+=binary_tree_preorder_traversal binary_tree_levelorder_traversal binary_tree_levelorder_traversal_II Best_Sell_Stock Best_Sell_Stock_II Best_Sell_Stock_III
-TARGET+=Pascal_Triangle Pascal_Triangle_II
+TARGET+=Pascal_Triangle Pascal_Triangle_II Populating_Next_Right Populating_Next_Right_II
 
 all:$(TARGET)
 
