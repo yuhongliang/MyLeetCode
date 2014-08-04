@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <stack>
+#include <queue>
 using namespace std;
 
 // Definition for binary tree
@@ -14,20 +14,30 @@ struct TreeNode {
 class Solution 
 {
 	public:
-	    vector<int> preorderTraversal(TreeNode *root) 
+	    vector< vector<int> > levelOrder(TreeNode *root) 
 		{
-			vector<int> result;
-			const TreeNode *p = root;
-			stack<const TreeNode*> s;
-			if(p) s.push(p);
-
-			while(!s.empty())
+			vector<vector<int>> result;
+			if(!root)
+				return result;
+			queue<TreeNode*> travQue[2];
+			int index = 0;
+			TreeNode *p = root;
+			travQue[index].push(p);
+			while(!travQue[index].empty())
 			{
-				p = s.top();
-				s.pop();
-				result.push_back(p->val);
-				if(p->right) s.push(p->right);
-				if(p->left) s.push(p->left);
+				vector<int> levRest;
+				while(!travQue[index].empty())
+				{
+					p = travQue[index].front();
+					travQue[index].pop();
+					levRest.push_back(p->val);
+					if(p->left)
+						travQue[(index+1)%2].push(p->left);
+					if(p->right)
+						travQue[(index+1)%2].push(p->right);
+				}
+				index = (index+1)%2;
+				result.push_back(levRest);
 			}
 			return result;
 		}
@@ -36,11 +46,16 @@ class Solution
 void printTree(TreeNode *root)
 {
 	Solution so;
-	vector<int> ret;
-   	ret	= so.preorderTraversal(root);
+	vector<vector<int>> ret;
+   	ret	= so.levelOrder(root);
 	for(size_t i=0; i<ret.size(); i++)
 	{
-		cout<<ret[i];
+		vector<int> leveRest = ret[i];
+		for(size_t j=0; j<leveRest.size(); j++)
+		{
+			cout<<leveRest[j];
+		}
+		cout<<endl;
 	}
 	cout<<endl;
 }
@@ -71,4 +86,5 @@ int main()
 	}
 	makeTree(&root, 1, data);
 	printTree(&root);
+	printTree(NULL);
 }
