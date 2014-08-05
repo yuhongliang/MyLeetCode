@@ -33,9 +33,9 @@ int main()
 {
 	Solution so;
 	vector<vector<int>> ret = so.generate(2);
-	for(int i=0; i<ret.size();i++)
+	for(size_t i=0; i<ret.size();i++)
 	{
-		for(int j=0; j<ret[i].size(); j++)
+		for(size_t j=0; j<ret[i].size(); j++)
 		{
 			cout<<ret[i][j];
 		}
